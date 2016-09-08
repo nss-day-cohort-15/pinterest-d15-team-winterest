@@ -13,6 +13,10 @@ let isAuth = (AuthFactory)=> new Promise((resolve, reject)=>{
 
 app.config(($routeProvider) => {
   $routeProvider
+    .when('/', {
+      templateUrl: 'partials/Login.html',
+      controller: 'LoginCtrl'
+    })
     .when('/login', {
       templateUrl: 'partials/Login.html',
       controller: 'LoginCtrl'
@@ -20,12 +24,16 @@ app.config(($routeProvider) => {
     .when('/boards/list', {
       templateUrl: 'partials/BoardList.html',
       controller: 'BoardListCtrl',
-      // resolve: {isAuth}
+      resolve: {isAuth}
     })
     .when('/boards/:boardId', {
       templateUrl: 'partials/BoardSingle.html',
       controller: 'BoardSingleCtrl',
-      // resolve: {isAuth}
+      resolve: {isAuth}
     })
     .otherwise('/');
+});
+
+app.run((FbCreds) => {
+  firebase.initializeApp(FbCreds);
 });
