@@ -5,10 +5,9 @@
     <title>Angular Boilerplate</title>
     <link rel="stylesheet" href="/lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
   </head>
-  <body ng-app="MyApp">
-    <div ng-controller="MyCtrl">
-      {{message}}
-    </div>
+  <body ng-app="Winterest" ng-cloak>
+    <div ng-include="'partials/NavBar.html'"></div>
+    <div ng-view></div>
 
     <!-- Third Party Libraries -->
     <script src="lib/bower_components/angular/angular.min.js"></script>
@@ -18,9 +17,12 @@
     <script src="app/app.js"></script>
 
     <!-- Factory -->
-    <script src="app/factories/MyFactory.js"></script>
+    <script src="app/factories/AuthFactory.js"></script>
 
     <!-- Controllers -->
-    <script src="app/controllers/MyCtrl.js"></script>
+    <script src="app/controllers/LoginCtrl.js"></script>
+    <script src="app/controllers/NavCtrl.js"></script>
+    <script src="app/controllers/BoardListCtrl.js"></script>
+    <script src="app/controllers/BoardSingleCtrl.js"></script>
   </body>
 </html>
