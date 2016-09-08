@@ -1,3 +1,3 @@
 'use strict';
 
-let app = angular.module('myApp', ['ngRoute']);
+let app = angular.module('MyApp', ['ngRoute']);
