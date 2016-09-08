@@ -1,19 +1,33 @@
 'use strict';
 
-app.controller('LoginCtrl', function($scope) {
+app.controller('LoginCtrl', function($scope, AuthFactory, $window) {
+  $scope.account = {
+    email: "",
+    password: ""
+  };
+
   $scope.loginWithEmailAndPassword = () => {
-    // do things
-    console.log('loginWithEmailAndPassword clicked');
+    AuthFactory.loginUserWithEmail($scope.account)
+    .then((data) => {
+      console.log("logged in with email", data);
+      $window.location.href = '#/boards/list';
+    });
   };
 
   $scope.registerWithEmailAndPassword = () => {
-    // do other things
-    console.log('registerWithEmailAndPassword clicked');
-
+    AuthFactory.createUser($scope.account)
+    .then((data) => {
+      console.log("User registered with email and password", data);
+      AuthFactory.loginUserWithEmail($scope.account);
+    });
   };
 
   $scope.loginWithGoogle = () => {
-    // do login with google goodies
+    AuthFactory.loginUserWithGoogle()
+    .then((userData) => {
+      console.log(userData);
+      $window.location.href = '#/boards/list';
+    });
     console.log('loginWithGoogle clicked');
 
   };
