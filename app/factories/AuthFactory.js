@@ -55,9 +55,11 @@ app.factory('AuthFactory', ($q) => {
 
   return {
     createUser,
+    getUserId,
     isAuthenticated,
     loginUserWithEmail,
     loginUserWithGoogle,
-    logout
+    logout,
+    setUserId
   };
 });
