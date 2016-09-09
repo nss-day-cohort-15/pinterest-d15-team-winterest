@@ -45,7 +45,7 @@ app.factory('PinsFactory', function ($q, $http, FirebaseURL) {
     });
   };
 
-   let updatePin = (pinObj, pinId)=>{
+  let updatePin = (pinObj, pinId)=>{
     console.log("pin object", pinObj);
     return $q((resolve, reject)=>{
       $http.patch(`${FirebaseURL}pins/${pinId}.json`, JSON.stringify(pinObj))
