@@ -47,16 +47,28 @@ app.factory('BoardsFactory', ($q, $http, FirebaseURL, AuthFactory, PinsFactory) 
         });
     })
     .then(()=> {
+      let pins = [];
       return $q((resolve, reject)=> {
-        $http.delete(`${FirebaseURL}pins.json?orderBy="boardId"&equalTo="${boardId}"`)
-        .success(()=> {
-          console.log('pins on board deleted');
-          resolve();
+        $http.get(`${FirebaseURL}pins.json?orderBy="boardId"&equalTo="${boardId}"`)
+        .success((pinsObj)=> {
+          console.log('Pins on board to be deleted: ', pinsObj);
+          // Extracting Firebase Id from each pin
+          Object.keys(pinsObj).forEach((key) => {
+            pins.push(key);
+          });
+          resolve(pins);
         })
         .error((error)=> {
           console.log('error on deleting pins: ', error);
           reject(error);
         });
+      })
+      .then((pinsArray) => {
+        return $q.all(
+          pinsArray.map((pinId) => {
+            return PinsFactory.deletePin(pinId);
+          })
+        );
       });
     });
   };
@@ -73,7 +85,7 @@ app.factory('BoardsFactory', ($q, $http, FirebaseURL, AuthFactory, PinsFactory) 
           reject(error);
         });
     });
-  }
+  };
 
   return {
     createBoard,

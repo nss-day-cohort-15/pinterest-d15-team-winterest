@@ -12,7 +12,7 @@ app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location, B
         isEditing: true
       }
     });
-  }
+  };
 
   $scope.open = () => {
     let modalInstance = $uibModal.open({
@@ -34,7 +34,14 @@ app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location, B
 
   $scope.boardDelete = (boardId)=> {
     BoardsFactory.deleteBoard(boardId)
-    .then(()=> console.log('board deleted:', boardId));
+    .then(() => {
+      console.log('board deleted:', boardId);
+      console.info('Repainting DOM with boards.');
+      return BoardsFactory.getBoards();
+    })
+    .then((boards) => {
+      $scope.boards = boards;
+    });
   };
 
   $scope.boards = boards;

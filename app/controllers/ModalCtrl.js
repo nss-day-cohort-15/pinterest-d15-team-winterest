@@ -27,7 +27,7 @@ app.controller('ModalCtrl', function($scope, $uibModalInstance, AuthFactory, Boa
     let updatedBoard = {
       title: board.title,
       description: board.description
-    }
+    };
     BoardsFactory.updateBoard(updatedBoard, board.id)
     .then(()=>{
       console.log("successful edit");

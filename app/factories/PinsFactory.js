@@ -57,7 +57,7 @@ app.factory('PinsFactory', function ($q, $http, FirebaseURL) {
           reject(error);
         });
     });
-  }
+  };
 
   return {
     createPin,

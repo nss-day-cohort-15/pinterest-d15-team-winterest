@@ -5,5 +5,5 @@ app.controller("QuotesCtrl", function($scope, ApiFactory){
   .then((quotes)=>{
     $scope.quotes = quotes;
     console.log("$scope.quotes");
-  })
+  });
 });
