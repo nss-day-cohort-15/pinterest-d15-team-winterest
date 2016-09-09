@@ -1,1 +1,15 @@
-<div>{{message}}</div>
+<button ng-click="open()"> Make Pin</button>
+
+<div>{{board.title}}</div>
+<div>{{board.description}}</div>
+
+<div class="container">
+  <div ng-repeat="pin in pins">
+    <div class="clearfix" ng-if="$index % 3 == 0"></div>
+      <div class="col-xs-4">
+        <img ng-src="{{pin.imgUrl}}" class="img-thumbnail">
+          <h3> {{pin.title}} </h3>
+          <p> {{pin.description}} </p>
+      </div>
+  </div>
+</div>

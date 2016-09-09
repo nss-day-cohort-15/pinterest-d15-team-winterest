@@ -28,14 +28,16 @@ app.config(($routeProvider) => {
       resolve: {
         isAuth,
         boards: function(BoardsFactory){
-          return BoardsFactory.getBoards()
+          return BoardsFactory.getBoards();
         }
       }
     })
     .when('/boards/:boardId', {
       templateUrl: 'partials/BoardSingle.html',
       controller: 'BoardSingleCtrl',
-      resolve: {isAuth}
+      resolve: {
+        isAuth
+      }
     })
     .otherwise('/');
 });
