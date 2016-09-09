@@ -32,6 +32,11 @@ app.config(($routeProvider) => {
         }
       }
     })
+    .when('/boards/search', {
+      templateUrl: 'partials/Search.html',
+      controller: 'SearchCtrl',
+      resolve: {isAuth}
+    })
     .when('/boards/:boardId', {
       templateUrl: 'partials/BoardSingle.html',
       controller: 'BoardSingleCtrl',

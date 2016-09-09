@@ -1,0 +1,23 @@
+.boardCard,
+.pinCard {
+  box-shadow: 2px 2px 3px #aaa;
+  padding: 10px;
+  text-align: center;
+  height: 200px;
+}
+
+.pinCard {
+  height: 350px;
+}
+
+.pinImg {
+  display: inline-block;
+  margin: 0 auto;
+  max-height: 200px;
+  max-width: 90%;
+}
+
+.boardInfo,
+.pinInfo {
+  text-align: center;
+}
