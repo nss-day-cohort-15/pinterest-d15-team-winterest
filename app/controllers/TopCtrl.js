@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("TopCtrl", ($route)=>{
+app.controller("TopCtrl", ($route, $window)=>{
   firebase.auth().onAuthStateChanged(function(user){
     if (user){
       console.log("Current user logged is?", user.uid);

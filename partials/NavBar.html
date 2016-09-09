@@ -11,20 +11,20 @@
     </div>
 
     <!-- Search field -->
-    <div class="col-xs-6 searchBox" ng-show="isActive('/items/list')">
+    <!-- div class="col-xs-6 searchBox" ng-show="isActive('/boards/search')">
       <div class="input-group">
         <span class="input-group-btn">
           <button class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
         </span>
         <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText.search">
       </div>
-    </div><!-- End Search field -->
+    </div><!End Search field --> 
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li ng-show="!isLoggedIn"><a ng-href="#/login">Login</a></li>
-        <li ng-show="isLoggedIn"><a ng-href="#/boards/search">Search</a></li>
+        <li ng-show="isLoggedIn"><a ng-href="#/boards/search">Ron Swanson</a></li>
         <li ng-show="isLoggedIn"><a ng-href="#/boards/list">Boards</a></li>
         <li ng-show="isLoggedIn" ng-click="logout()"><a href="#/login">Logout</a></li>
       </ul>
