@@ -1,9 +1,14 @@
 <div class="modal-header">
-  <h3 class="modal-title">Matt's Amazing Modal</h3>
+  <h3 class="modal-title">Create a Board</h3>
 </div>
 <div class="modal-body">
-  I'm a friggin' modal ova heeeya!
+  <label for="boardTitle">Title:</label>
+  <input type="text" class="form-control" name="boardTitle" ng-model="board.title"/>
+
+  <label for="boardDescription">Description:</label>
+  <input type="text" class="form-control" name="boardDescription" ng-model="board.description"/>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-info" ng-click="close()">Close</button>
+  <button class="btn btn-danger" ng-click="close()">Close</button>
+  <button class="btn btn-success" ng-click="create()">Create</button>
 </div>

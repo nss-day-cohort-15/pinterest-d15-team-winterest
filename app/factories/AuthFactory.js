@@ -41,8 +41,7 @@ app.factory('AuthFactory', ($q) => {
         return $q.resolve(userData);
       })
       .catch(function(error){
-        let errorMessage = error.message;
-        console.log("Oops, there was an error logging in", errorMessage);
+        console.error("Oops, there was an error logging in:", error);
     });
   };
 
@@ -55,9 +54,11 @@ app.factory('AuthFactory', ($q) => {
 
   return {
     createUser,
+    getUserId,
     isAuthenticated,
     loginUserWithEmail,
     loginUserWithGoogle,
-    logout
+    logout,
+    setUserId
   };
 });

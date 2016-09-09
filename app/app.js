@@ -1,6 +1,7 @@
 'use strict';
 
-let app = angular.module('Winterest', ['ngRoute', 'ui.bootstrap']);
+let app = angular.module('Winterest', ['ngRoute', 'ui.bootstrap'])
+  .constant('FirebaseURL', 'https://pinterest-c6f56.firebaseio.com/');
 
 let isAuth = (AuthFactory)=> new Promise((resolve, reject)=>{
   // This will be a boolean and it will resolve if its true, meaning you can access the URLs below

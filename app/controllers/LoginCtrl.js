@@ -10,6 +10,7 @@ app.controller('LoginCtrl', function($scope, AuthFactory, $window) {
     AuthFactory.loginUserWithEmail($scope.account)
     .then((data) => {
       console.log("logged in with email", data);
+      AuthFactory.setUserId(data.uid);
       $window.location.href = '#/boards/list';
     });
   };
@@ -25,8 +26,11 @@ app.controller('LoginCtrl', function($scope, AuthFactory, $window) {
   $scope.loginWithGoogle = () => {
     AuthFactory.loginUserWithGoogle()
     .then((userData) => {
-      console.log(userData);
-      $window.location.href = '#/boards/list';
+      if (userData) {
+        console.info('User data after successful login:', userData);
+        $window.location.href = '#/boards/list';
+        AuthFactory.setUserId(userData.uid);
+      }
     });
     console.log('loginWithGoogle clicked');
 
