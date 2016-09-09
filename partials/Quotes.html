@@ -1,0 +1,10 @@
+<div class="container">
+  <div ng-repeat="quote in quotes">
+    <div class="clearfix" ng-if="$index % 3 == 0"></div>
+      <div class="col-xs-4">
+        <!-- <img ng-src="{{board.image}}" /> -->
+          <h3> Ron Swanson Quote #{{$index}} </h3>
+          <p> {{quote}} </p>
+      </div>
+  </div>
+</div>
