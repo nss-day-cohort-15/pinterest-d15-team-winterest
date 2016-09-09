@@ -14,7 +14,7 @@ app.controller('BoardSingleCtrl', function($scope, $routeParams, BoardsFactory, 
         isEditing: true
       }
     });
-  }
+  };
 
   let getBoardPins = ()=> {
     BoardsFactory.getSingleBoard(boardId)

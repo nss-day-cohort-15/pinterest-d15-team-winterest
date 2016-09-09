@@ -9,7 +9,7 @@ app.factory("ApiFactory", ($q, $http)=>{
       })
       .error((error)=>{
         reject(error);
-      })
+      });
     });
   };
 
