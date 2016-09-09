@@ -24,6 +24,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li ng-show="!isLoggedIn"><a ng-href="#/login">Login</a></li>
+        <li ng-show="isLoggedIn"><a ng-href="#/boards/search">Search</a></li>
         <li ng-show="isLoggedIn"><a ng-href="#/boards/list">Boards</a></li>
         <li ng-show="isLoggedIn" ng-click="logout()"><a href="#/login">Logout</a></li>
       </ul>
