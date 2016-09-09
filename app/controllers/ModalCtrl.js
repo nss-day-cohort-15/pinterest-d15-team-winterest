@@ -1,10 +1,8 @@
 'use strict';
 
-app.controller('ModalCtrl', function($scope, $uibModalInstance, AuthFactory, BoardsFactory, $route) {
-  $scope.board = {
-    title: '',
-    description: ''
-  };
+app.controller('ModalCtrl', function($scope, $uibModalInstance, AuthFactory, BoardsFactory, $route, board, isEditing) {
+  $scope.board = board;
+  $scope.isEditing = isEditing;
 
   $scope.create = () => {
     $scope.board.uid = AuthFactory.getUserId();
@@ -24,4 +22,23 @@ app.controller('ModalCtrl', function($scope, $uibModalInstance, AuthFactory, Boa
     $uibModalInstance.close();
     $scope.board = {};
   };
+
+  $scope.update = (board)=>{
+    let updatedBoard = {
+      title: board.title,
+      description: board.description
+    }
+    BoardsFactory.updateBoard(updatedBoard, board.id)
+    .then(()=>{
+      console.log("successful edit");
+      $scope.board = {};
+      $uibModalInstance.close();
+      return BoardsFactory.getBoards();
+    })
+    .then((boards)=>{
+      console.log("boards", boards);
+      $route.reload();
+    });
+  };
+
 });

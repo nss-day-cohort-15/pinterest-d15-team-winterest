@@ -3,11 +3,14 @@
 <div class="container">
   <div ng-repeat="board in boards">
     <div class="clearfix" ng-if="$index % 3 == 0"></div>
-      <div ng-click="viewBoard(board.id)" class="col-xs-4">
-        <!-- <img ng-src="{{board.image}}" /> -->
-          <h3> {{board.title}} </h3>
-          <p> {{board.description}} </p>
+      <div class="col-xs-4">
+        <div ng-click="viewBoard(board.id)">
+          <!-- <img ng-src="{{board.image}}" /> -->
+            <h3> {{board.title}} </h3>
+            <p> {{board.description}} </p>
+        </div>
+        <div><button class="btn btn-info" ng-click="boardEdit(board)">Edit</button></div>
+        <div><button class="btn btn-danger" ng-click="boardDelete(board.id)">X</button></div>
       </div>
-      <div><button class="btn btn-danger" ng-click="boardDelete(board.id)">X</button></div>
   </div>
 </div>
