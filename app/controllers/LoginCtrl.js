@@ -26,9 +26,11 @@ app.controller('LoginCtrl', function($scope, AuthFactory, $window) {
   $scope.loginWithGoogle = () => {
     AuthFactory.loginUserWithGoogle()
     .then((userData) => {
-      console.log(userData);
-      $window.location.href = '#/boards/list';
-      AuthFactory.setUserId(userData.uid);
+      if (userData) {
+        console.info('User data after successful login:', userData);
+        $window.location.href = '#/boards/list';
+        AuthFactory.setUserId(userData.uid);
+      }
     });
     console.log('loginWithGoogle clicked');
 
