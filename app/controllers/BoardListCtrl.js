@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('BoardListCtrl', function($scope, $uibModal) {
+app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location) {
   $scope.message = 'Boards be here!';
 
   $scope.open = () => {
@@ -9,4 +9,11 @@ app.controller('BoardListCtrl', function($scope, $uibModal) {
       controller: 'ModalCtrl'
     });
   };
+
+  $scope.viewBoard = (boardId)=>{
+    $location.path(`/boards/${boardId}`)
+  };
+
+  $scope.boards = boards;
+
 });
