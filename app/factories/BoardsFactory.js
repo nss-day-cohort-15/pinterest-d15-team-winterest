@@ -30,12 +30,18 @@ app.factory('BoardsFactory', ($q, $http, FirebaseURL, AuthFactory) => {
     });
   };
 
-  let getSingleBoard = ()=>{
+  let getSingleBoard = (boardId)=> {
+    return $q((resolve, reject) => {
+      $http.get(`${FirebaseURL}boards/${boardId}.json`)
+        .success((singleBoard) => {
+          resolve(singleBoard)
+        });
+    });
+  };
 
-  }
-  
   return {
     createBoard,
-    getBoards
+    getBoards,
+    getSingleBoard
   };
 });
