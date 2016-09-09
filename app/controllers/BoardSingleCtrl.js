@@ -5,6 +5,17 @@ app.controller('BoardSingleCtrl', function($scope, $routeParams, BoardsFactory, 
 
   let boardId = $routeParams.boardId;
 
+  $scope.pinUpdate = (pin)=>{
+    let modalInstance = $uibModal.open({
+      templateUrl: '../partials/PinsModal.html',
+      controller: 'PinModalCtrl',
+      resolve: {
+        pin,
+        isEditing: true
+      }
+    });
+  }
+
   let getBoardPins = ()=> {
     BoardsFactory.getSingleBoard(boardId)
     .then((singleBoard) => {
@@ -17,12 +28,18 @@ app.controller('BoardSingleCtrl', function($scope, $routeParams, BoardsFactory, 
     });
   };
 
-  $scope.open = (boardId) => {
+  $scope.open = () => {
      let modalInstance = $uibModal.open({
       templateUrl: '../partials/PinsModal.html',
       controller: 'PinModalCtrl',
       resolve: {
-        boardId
+        pin: {
+          title: '',
+          description: '',
+          imgUrl: '',
+          boardId: $routeParams.boardId,
+        },
+        isEditing: false
       }
     });
   };

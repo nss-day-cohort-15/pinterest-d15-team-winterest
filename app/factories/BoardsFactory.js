@@ -61,10 +61,25 @@ app.factory('BoardsFactory', ($q, $http, FirebaseURL, AuthFactory, PinsFactory) 
     });
   };
 
+  let updateBoard = (boardObj, boardId)=>{
+    console.log("board object", boardObj);
+    return $q((resolve, reject)=>{
+      $http.patch(`${FirebaseURL}boards/${boardId}.json`, JSON.stringify(boardObj))
+        .success((updatedObj)=>{
+          resolve(updatedObj);
+        })
+        .error((error)=>{
+          console.log("error", error);
+          reject(error);
+        });
+    });
+  }
+
   return {
     createBoard,
     getBoards,
     getSingleBoard,
-    deleteBoard
+    deleteBoard,
+    updateBoard
   };
 });
