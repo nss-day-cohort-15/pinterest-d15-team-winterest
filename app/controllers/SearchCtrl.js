@@ -6,6 +6,6 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
   .then((quotes)=>{
     $scope.quotes = quotes;
     console.log("$scope.quotes");
-  })
+  });
 
 });

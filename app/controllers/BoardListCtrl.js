@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location, BoardsFactory) {
+app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location, $q, BoardsFactory, PinsFactory) {
   $scope.message = 'Boards be here!';
 
   $scope.boardEdit= (board)=>{
@@ -45,5 +45,29 @@ app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location, B
   };
 
   $scope.boards = boards;
+  console.log(boards);
 
+  $scope.coverImages = [];
+
+  let getImgUrlsFromBoard = (board) => {
+    return PinsFactory.getPins(board.id)
+      .then((pinsArray) => {
+        let imgUrlsArr = [];
+        pinsArray.forEach((pin, index) => {
+          if (index < 4) {
+            imgUrlsArr.push(pin.imgUrl);
+          }
+        });
+        $scope.coverImages.push(imgUrlsArr);
+        console.log($scope.coverImages);
+      });
+  };
+
+  let getPinImagesFromBoards = () => {
+    boards.map((board) => {
+      getImgUrlsFromBoard(board);
+    });
+  };
+
+  getPinImagesFromBoards();
 });

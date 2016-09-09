@@ -5,9 +5,14 @@
     <div class="clearfix" ng-if="$index % 3 == 0"></div>
       <div class="col-xs-4 boardCard">
         <div ng-click="viewBoard(board.id)">
-          <!-- <img ng-src="{{board.image}}" /> -->
-            <h3> {{board.title}} </h3>
-            <p> {{board.description}} </p>
+          <div ng-repeat="stuff in coverImages">
+            <div ng-repeat="pics in stuff">
+              <img ng-src="{{stuff[$index]}}" />
+              {{$index}}
+            </div>
+          </div>
+          <h3> {{board.title}} </h3>
+          <p> {{board.description}} </p>
         </div>
         <button class="btn btn-info" ng-click="boardEdit(board)">Edit</button>
         <button class="btn btn-danger" ng-click="boardDelete(board.id)">X</button>
