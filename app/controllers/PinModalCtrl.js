@@ -14,11 +14,11 @@ app.controller('PinModalCtrl', function($scope, $uibModalInstance, PinsFactory, 
     .then(()=>{
       $scope.pin = {};
       $uibModalInstance.close();
-      return PinsFactory.getPins($routeParams.boardId)
+      return PinsFactory.getPins($routeParams.boardId);
     })
     .then((pins)=>{
       console.log("pins", pins);
-      $route.reload()
+      $route.reload();
     });
   };
 

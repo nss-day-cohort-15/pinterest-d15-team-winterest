@@ -12,11 +12,11 @@ app.controller('ModalCtrl', function($scope, $uibModalInstance, AuthFactory, Boa
     .then(()=>{
       $scope.board = {};
       $uibModalInstance.close();
-      return BoardsFactory.getBoards()
+      return BoardsFactory.getBoards();
     })
     .then((boards)=>{
       console.log("boards", boards);
-      $route.reload()
+      $route.reload();
     });
   };
 

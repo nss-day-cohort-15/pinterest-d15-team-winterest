@@ -5,15 +5,17 @@ app.controller('BoardSingleCtrl', function($scope, $routeParams, BoardsFactory, 
 
   let boardId = $routeParams.boardId;
 
-  BoardsFactory.getSingleBoard(boardId)
-  .then((singleBoard) => {
-    console.log(singleBoard);
-    $scope.board = singleBoard;
-    return PinsFactory.getPins($routeParams.boardId)
-  })
-  .then ((pins) => {
-    $scope.pins = pins;
-  })
+  let getBoardPins = ()=> {
+    BoardsFactory.getSingleBoard(boardId)
+    .then((singleBoard) => {
+      console.log(singleBoard);
+      $scope.board = singleBoard;
+      return PinsFactory.getPins($routeParams.boardId);
+    })
+    .then ((pins) => {
+      $scope.pins = pins;
+    });
+  };
 
   $scope.open = (boardId) => {
      let modalInstance = $uibModal.open({
@@ -25,4 +27,13 @@ app.controller('BoardSingleCtrl', function($scope, $routeParams, BoardsFactory, 
     });
   };
 
+  $scope.pinDelete = (pinId)=> {
+    PinsFactory.deletePin(pinId)
+    .then(()=> {
+      getBoardPins();
+      console.log('pin delete: ', pinId);
+    });
+  };
+
+  getBoardPins();
 });
