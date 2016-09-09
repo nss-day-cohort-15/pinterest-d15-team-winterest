@@ -30,10 +30,24 @@ app.factory('PinsFactory', function ($q, $http, FirebaseURL) {
           reject(errorFromFirebase);
         });
     });
-  }
+  };
+
+  let deletePin = (pinId) => {
+    return $q((resolve, reject) => {
+      $http.delete(`${FirebaseURL}pins/${pinId}.json`)
+        .success(() => {
+          resolve();
+        })
+        .error((error)=> {
+          console.log('pin delete fail:', error);
+          reject(error);
+        });
+    });
+  };
 
   return {
     createPin,
-    getPins
-  }
+    getPins,
+    deletePin
+  };
 });
