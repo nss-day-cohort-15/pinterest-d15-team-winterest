@@ -22,6 +22,11 @@ app.config(($routeProvider) => {
       templateUrl: 'partials/Login.html',
       controller: 'LoginCtrl'
     })
+    .when('/boards/quotes', {
+      templateUrl: 'partials/Quotes.html',
+      controller: 'QuotesCtrl',
+      resolve: {isAuth}
+    })
     .when('/boards/list', {
       templateUrl: 'partials/BoardList.html',
       controller: 'BoardListCtrl',
