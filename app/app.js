@@ -25,7 +25,12 @@ app.config(($routeProvider) => {
     .when('/boards/list', {
       templateUrl: 'partials/BoardList.html',
       controller: 'BoardListCtrl',
-      resolve: {isAuth}
+      resolve: {
+        isAuth,
+        boards: function(BoardsFactory){
+          return BoardsFactory.getBoards()
+        }
+      }
     })
     .when('/boards/:boardId', {
       templateUrl: 'partials/BoardSingle.html',

@@ -4,12 +4,9 @@ app.factory('AuthFactory', ($q) => {
 
   var uid = null;
 
-  let setUserId = (userId) => {
-    uid = userId;
-  };
-
   let getUserId = () => {
-    return uid;
+    return firebase.auth().currentUser.uid;
+
   };
 
   let createUser = (userObj) => {
@@ -23,7 +20,6 @@ app.factory('AuthFactory', ($q) => {
   let loginUserWithEmail = (userObj) => {
     return firebase.auth().signInWithEmailAndPassword(userObj.email, userObj.password)
     .then((userData) => {
-      uid = userData.uid;
       return $q.resolve(userData);
     })
     .catch((error) => {
@@ -37,7 +33,6 @@ app.factory('AuthFactory', ($q) => {
     let provider = new firebase.auth.GoogleAuthProvider();
       return firebase.auth().signInWithPopup(provider)
       .then((userData) => {
-        uid = userData.uid;
         return $q.resolve(userData);
       })
       .catch(function(error){
@@ -58,7 +53,6 @@ app.factory('AuthFactory', ($q) => {
     isAuthenticated,
     loginUserWithEmail,
     loginUserWithGoogle,
-    logout,
-    setUserId
+    logout
   };
 });
