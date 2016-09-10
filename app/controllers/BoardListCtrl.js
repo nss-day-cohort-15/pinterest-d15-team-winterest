@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location, $q, BoardsFactory, PinsFactory) {
+app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location, BoardsFactory) {
   $scope.boards = boards;
 
   $scope.boardEdit= (board)=>{

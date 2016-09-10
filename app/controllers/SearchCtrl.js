@@ -13,12 +13,12 @@ app.controller("SearchCtrl", function($scope, ApiFactory, $uibModal, PinsFactory
       title: `Ron Swanson Quote`,
       description: quote,
       imgUrl: 'https://lovelace-media.imgix.net/uploads/413/f4becb20-a4f4-0132-44f6-0ebc4eccb42f.jpg?'
-    }
+    };
     console.log("quote?", quoteObj);
     PinsFactory.createPin(quoteObj)
     .then ((pin)=>{
       console.log("created successfully", pin);
-      whichBoard(pin)
+      whichBoard(pin);
     });
   };
 
@@ -31,5 +31,5 @@ app.controller("SearchCtrl", function($scope, ApiFactory, $uibModal, PinsFactory
         pin
       }
     });
-  };
+  }
 });
