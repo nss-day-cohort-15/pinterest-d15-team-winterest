@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location, BoardsFactory) {
-  $scope.message = 'Boards be here!';
+  $scope.boards = boards;
 
   $scope.boardEdit= (board)=>{
     let modalInstance = $uibModal.open({
@@ -43,7 +43,4 @@ app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location, B
       $scope.boards = boards;
     });
   };
-
-  $scope.boards = boards;
-
 });
