@@ -27,8 +27,33 @@ app.factory('BoardsFactory', ($q, $http, FirebaseURL, AuthFactory, PinsFactory) 
         .error((errorFromFirebase) => {
           reject(errorFromFirebase);
         });
+    })
+    .then((boards) => {
+      // Adding a property to each board called imgUrls
+      // that contains four pin images to be displayed
+      // on a user's Boards page
+      boards.forEach((board) => {
+        getImgUrlsFromBoard(board);
+      });
+
+      console.info('New modified boards with imgUrls:', boards);
+      return $q.resolve(boards);
     });
   };
+
+  // Internal function, no need to export
+  function getImgUrlsFromBoard(board) {
+    // Augmenting the board object to include a list of image urls
+    board.imgUrls = [];
+    return PinsFactory.getPins(board.id)
+      .then((pinsArray) => {
+        pinsArray.forEach((pin, index) => {
+          if (index < 4) {
+            board.imgUrls.push(pin.imgUrl);
+          }
+        });
+      });
+  }
 
   let getSingleBoard = (boardId)=> {
     return $q((resolve, reject) => {
