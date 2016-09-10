@@ -3,12 +3,11 @@
 <div class="container">
   <div ng-repeat="board in boards">
     <div class="clearfix" ng-if="$index % 3 == 0"></div>
-      <div class="col-xs-4 boardCard">
+      <div class="col-xs-12 col-md-6 boardCard">
         <div ng-click="viewBoard(board.id)">
-          <div ng-repeat="stuff in coverImages">
-            <div ng-repeat="pics in stuff">
-              <img ng-src="{{stuff[$index]}}" />
-              {{$index}}
+          <div class="col-xs-10 col-xs-offset-2">
+            <div class="col-xs-2" ng-repeat="image in coverImages[$index]">
+                <img class="boardImg" ng-src="{{image}}"/>
             </div>
           </div>
           <h3> {{board.title}} </h3>
