@@ -22,6 +22,7 @@
       <img draggable="false" ng-src="{{pin.imgUrl}}" class="img-thumbnail pinImg">
       <h3> {{pin.title}} </h3>
       <p> {{pin.description}} </p>
+      <p style="display:none">Index: {{pin.index = pins.indexOf(pin)}}</p>
       <button class="btn btn-info" ng-click="pinUpdate(pin)">Edit</button>
       <button class="btn btn-danger" ng-click="pinDelete(pin.id)">X</button>
     </li>
