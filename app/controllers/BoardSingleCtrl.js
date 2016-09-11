@@ -53,4 +53,9 @@ app.controller('BoardSingleCtrl', function($scope, $routeParams, BoardsFactory, 
   };
 
   getBoardPins();
+
+//attempting drag and drop functionality
+
+$scope.selected = null;
+
 });
