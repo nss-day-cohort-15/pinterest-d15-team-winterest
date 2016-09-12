@@ -24,12 +24,6 @@ app.controller('BoardSingleCtrl', function($scope, $routeParams, BoardsFactory, 
       return PinsFactory.getPins($routeParams.boardId);
     })
     .then ((pins) => {
-      // Sorting the pins by index before being attached to $scope
-      // Docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-      pins.sort(function (a, b) {
-        return a.index - b.index;
-      });
-
       console.log(pins);
       $scope.pins = pins;
 

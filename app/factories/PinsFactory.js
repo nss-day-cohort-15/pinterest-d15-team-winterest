@@ -24,6 +24,11 @@ app.factory('PinsFactory', function ($q, $http, FirebaseURL) {
             objFromFirebase[key].id = key;
             pins.push(objFromFirebase[key]);
           });
+          // Sorting the pins by index
+          // Docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+          pins.sort(function (a, b) {
+            return a.index - b.index;
+          });
           resolve(pins);
         })
         .error((errorFromFirebase) => {
