@@ -9,7 +9,7 @@
           <div ng-click="viewBoard(board.id)">
              <span ng-show="options" class="glyphicon glyphicon-remove remove" ng-click="boardDelete(board.id)"></span>
             <div class="col-xs-12">
-              <div class="col-xs-6" ng-repeat="image in board.imgUrls">
+              <div class="col-xs-6" ng-repeat="image in board.imgUrls track by $index">
                 <img class="boardImg" ng-src="{{image}}"/>
               </div>
             </div>
