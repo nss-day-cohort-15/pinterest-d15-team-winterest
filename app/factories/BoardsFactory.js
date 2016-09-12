@@ -47,11 +47,19 @@ app.factory('BoardsFactory', ($q, $http, FirebaseURL, AuthFactory, PinsFactory) 
     return PinsFactory.getPins(board.id)
       .then((pinsArray) => {
         board.imgUrls = [];
+
         pinsArray.forEach((pin, index) => {
           if (index < 4) {
             board.imgUrls.push(pin.imgUrl);
           }
         });
+
+        if (board.imgUrls.length < 4) {
+          // If less than 4 pins, add blank images
+          for (let i = board.imgUrls.length; i < 4; i++) {
+            board.imgUrls.push('https://i.imgur.com/BaJOjOc.jpg');
+          }
+        }
       });
   }
 
