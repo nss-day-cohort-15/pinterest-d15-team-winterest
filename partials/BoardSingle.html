@@ -16,7 +16,7 @@
       class="col-xs-4 pinCard"
       ng-mouseenter="options=true" ng-mouseleave="options=false"
     >
-      <span ng-show="options" class="glyphicon glyphicon-remove remove" ng-click="pinDelete(pin.id)"></span>
+      <span ng-show="options" class="glyphicon glyphicon-remove removePin" ng-click="pinDelete(pin.id)"></span>
       <img draggable="false" ng-src="{{pin.imgUrl}}" class="img-thumbnail pinImg">
       <h3> {{pin.title}} </h3>
       <p> {{pin.description}} </p>
