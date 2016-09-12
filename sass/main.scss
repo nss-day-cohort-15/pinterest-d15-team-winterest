@@ -44,6 +44,31 @@
   padding-top: 9px;
 }
 
+.btn-toolbar {
+  button {
+    margin: 5px 0 5px 0;
+  }
+}
+
+#loginBackground {
+  height: 100vh;
+  background: linear-gradient(to left, lightgrey , navajowhite);
+}
+
+#loginBox {
+  padding: 30px;
+  border: 2px lightgrey solid;
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 60px;
+  h2 {
+    margin-top: 0px;
+  }
+}
+
+.navbar {
+  margin-bottom: 0 !important;
+}
 
 // Needed for drag and drop functionality
 ul[dnd-list],
