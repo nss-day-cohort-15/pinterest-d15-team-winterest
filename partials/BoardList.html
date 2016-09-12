@@ -3,7 +3,7 @@
     <span type="button" class="glyphicon glyphicon-plus-sign plusCreate" ng-click="open()"></span>
     <h5 class="createBoard"> Create a Board</h5>
   </div>
-    <div ng-repeat="board in boards" class="col-md-4 col-xs-6">
+    <div ng-repeat="board in boards | filter: searchText" class="col-md-4 col-xs-6">
       <div class="clearfix" ng-if="$index % 4 == 0"></div>
         <div class="col-xs-12 boardCard" ng-mouseenter="options=true" ng-mouseleave="options=false">
           <div ng-click="viewBoard(board.id)">

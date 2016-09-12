@@ -1,7 +1,13 @@
 'use strict';
 
-app.controller('BoardSingleCtrl', function($scope, $routeParams, BoardsFactory, PinsFactory, $uibModal, $route) {
+app.controller('BoardSingleCtrl', function($scope, $routeParams, BoardsFactory, PinsFactory, $uibModal, $route, SearchService) {
   $scope.message = 'Single board pins be here!';
+
+  $scope.$watch(function () { return SearchService.getSearchText(); }, function (newValue, oldValue) {
+       if (newValue !== null) {
+           $scope.searchText= SearchService.getSearchText();
+       }
+   }, true);
 
   let boardId = $routeParams.boardId;
 

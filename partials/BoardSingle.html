@@ -7,7 +7,7 @@
 </div>
   <ul dnd-list="pins">
     <li
-      ng-repeat="pin in pins"
+      ng-repeat="pin in pins | filter: searchText"
       dnd-draggable="pin"
       dnd-moved="pins.splice($index, 1)"
       dnd-effect-allowed="move"
