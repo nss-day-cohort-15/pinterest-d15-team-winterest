@@ -1,20 +1,22 @@
-
-<button type="button" class="btn btn-primary" ng-click="open()">Create Board</button>
 <div class="container">
-  <div ng-repeat="board in boards">
-    <div class="clearfix" ng-if="$index % 4 == 0"></div>
-      <div class="col-xs-12 col-md-6 boardCard">
-        <div ng-click="viewBoard(board.id)">
-          <div class="col-xs-10 col-xs-offset-2">
-            <div class="col-xs-2" ng-repeat="image in board.imgUrls track by $index">
+  <div class="col-md-4 col-xs-6 createDiv">
+    <span type="button" class="glyphicon glyphicon-plus-sign plusCreate" ng-click="open()"></span>
+    <h5 class="createBoard"> Create a Board</h5>
+  </div>
+    <div ng-repeat="board in boards" class="col-md-4 col-xs-6">
+      <div class="clearfix" ng-if="$index % 4 == 0"></div>
+        <div class="col-xs-12 boardCard" ng-mouseenter="options=true" ng-mouseleave="options=false">
+          <div ng-click="viewBoard(board.id)">
+             <span ng-show="options" class="glyphicon glyphicon-remove remove" ng-click="boardDelete(board.id)"></span>
+            <div class="col-xs-12">
+              <div class="col-xs-6" ng-repeat="image in board.imgUrls track by $index">
                 <img class="boardImg" ng-src="{{image}}"/>
+              </div>
             </div>
+            <h3 class="title"> {{board.title}} </h3>
+            <p class="boardDescription"> {{board.description}} </p>
           </div>
-          <h3> {{board.title}} </h3>
-          <p> {{board.description}} </p>
         </div>
-        <button class="btn btn-info" ng-click="boardEdit(board)">Edit</button>
-        <button class="btn btn-danger" ng-click="boardDelete(board.id)">X</button>
-      </div>
+        <button class="btn btn-secondary editBtn" ng-click="boardEdit(board)">Edit</button>
   </div>
 </div>
