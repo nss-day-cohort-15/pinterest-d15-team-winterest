@@ -1,6 +1,17 @@
 'use strict';
 
-app.controller('NavCtrl', function($scope, AuthFactory, $window, $location) {
+app.controller('NavCtrl', function($scope, AuthFactory, $window, $location, SearchService) {
+
+  let searchText = SearchService.getSearchText();
+  $scope.searchText = searchText;
+
+  $scope.$watch('searchText', function(newValue) {
+    $scope.searchText = newValue;
+    SearchService.setSearchText(newValue);
+    console.log('setting searchTerm:', SearchService.getSearchText());
+    console.log($scope.searchText);
+  });
+
   // Logs out current user
   $scope.logout = () => {
     AuthFactory.logout()

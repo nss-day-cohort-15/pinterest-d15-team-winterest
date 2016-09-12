@@ -1,7 +1,13 @@
 'use strict';
 
-app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location, BoardsFactory) {
+app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location, BoardsFactory, SearchService) {
   $scope.boards = boards;
+
+  $scope.$watch(function () { return SearchService.getSearchText(); }, function (newValue, oldValue) {
+       if (newValue != null) {
+           $scope.searchText= SearchService.getSearchText();
+       }
+   }, true);
 
   $scope.boardEdit= (board)=>{
     let modalInstance = $uibModal.open({
