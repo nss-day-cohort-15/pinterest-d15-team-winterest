@@ -46,9 +46,8 @@ app.factory('PinsFactory', function ($q, $http, FirebaseURL) {
   };
 
   let updatePin = (pinObj, pinId)=>{
-    console.log("pin object", pinObj);
     return $q((resolve, reject)=>{
-      $http.patch(`${FirebaseURL}pins/${pinId}.json`, JSON.stringify(pinObj))
+      $http.patch(`${FirebaseURL}pins/${pinId}.json`, angular.toJson(pinObj))
         .success((updatedObj)=>{
           resolve(updatedObj);
         })
@@ -59,10 +58,22 @@ app.factory('PinsFactory', function ($q, $http, FirebaseURL) {
     });
   };
 
+  // Used to update pin indices when using drag and drop
+  let updateAllPinsOnBoard = (pins) => {
+    if (!pins) { return; }
+    // Update the index of all pins on the board
+    return $q.all(
+      pins.map((pin) => {
+        return updatePin(pin, pin.id);
+      })
+    );
+  };
+
   return {
     createPin,
     getPins,
     deletePin,
-    updatePin
+    updatePin,
+    updateAllPinsOnBoard
   };
 });
