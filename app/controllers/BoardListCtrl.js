@@ -22,7 +22,7 @@ app.controller('BoardListCtrl', function($scope, $uibModal, boards, $location, B
 
   $scope.open = () => {
     let modalInstance = $uibModal.open({
-      templateUrl: '../partials/ModalView.html',
+      templateUrl: '/partials/ModalView.html',
       controller: 'ModalCtrl',
       resolve: {
         board: {
